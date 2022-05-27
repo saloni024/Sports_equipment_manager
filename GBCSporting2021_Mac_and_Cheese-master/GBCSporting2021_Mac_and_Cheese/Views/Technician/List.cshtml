@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Technician>
+@{
+    ViewBag.Title = "View Technicians";
+}
+
+<h2 class="display-4">Technician Manager</h2>
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Technician tech in Model)
+        {
+        <tr>
+            <td>@tech.TechName</td>
+            <td>@tech.TechEmail</td>
+            <td>@tech.TechPhone</td>
+            <td><a class="btn btn-primary" asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechId">Edit</a></td>
+            <td><a class="btn btn-primary" asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechId">Delete</a></td>
+        </tr>
+        }
+        
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="Technician" asp-action="Add">Add Technician</a>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Customer>
+@{
+    ViewBag.Title = "View Customers";
+}
+<h2 class="display-4">Customer Manager</h2>
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Customer customer in Model)
+        {
+        <tr>
+            <td>@customer.CustFName @customer.CustLName</td>
+            <td>@customer.CustEmail</td>
+            <td>@customer.City</td>
+            <td><a class="btn btn-primary" asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustId">Edit</a></td>
+            <td><a class="btn btn-primary" asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustId">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="Customer" asp-action="Add">Add Customer</a>
